@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
-import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
-import Docs from '../components/docs'
-import '../stylesheets/style.scss'
-import '../stylesheets/prism-dracula.css'
+import '../stylesheets/style.scss';
+import '../stylesheets/prism-dracula.css';
+
+import React, { Component } from 'react';
+
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+
+import Docs from '../components/docs';
 
 export default class DocTemplate extends Component {
   render() {
@@ -25,19 +28,19 @@ export default class DocTemplate extends Component {
 }
 
 export const pageQuery = graphql`
-  query {
-    markdownRemark(fileAbsolutePath: {ne: "docs/index.md"}) {
+  query($fileAbsolutePath: String!) {
+    markdownRemark(
+      fileAbsolutePath: { eq: $fileAbsolutePath }
+    ) {
       html
       htmlAst
       frontmatter {
-        language_tabs
         title
-        footer
         search
         attachments {
           publicURL
         }
       }
     }
-  }  
+  }
 `

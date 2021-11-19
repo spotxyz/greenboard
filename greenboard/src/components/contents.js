@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import RehypeReact from 'rehype-react'
-import Pre from './pre'
-import { parseCodeBlocks } from '../utils/htmlAst'
+import React, { Component } from 'react';
+
+import RehypeReact from 'rehype-react';
+
+import Pre from './pre';
 
 const renderAst = (codeBlocks, elementsRendered, updateRendered, selectedLanguage) => {
   return new RehypeReact({
@@ -32,8 +33,9 @@ export default class Contents extends Component {
   }
 
   render() {
-    const { htmlAst, language } = this.props
-    const codeBlocks = parseCodeBlocks(htmlAst)
+    const { htmlAst } = this.props
+    const language = 'shell'
+    const codeBlocks = []
     return (
       <div className="content">
         {renderAst(codeBlocks, this.codeBlocksRendered, this.renderedCodeBlock, language)(htmlAst)}

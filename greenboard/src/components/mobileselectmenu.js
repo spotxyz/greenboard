@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
-import { getLinks } from '../utils/htmlAst'
+
+import { getLinks } from '../utils/htmlAst';
 
 export default class MobileSelectMenu extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      selectedItem: ""
-    }
-
-    this.linkSelected = this.linkSelected.bind(this)
-  }
-
-  componentWillMount() {
     this.links = getLinks(this.props.ast)
-
-    this.setState({
-      selectedItem: this.links[0].id
-    })
+    this.linkSelected = this.linkSelected.bind(this)
   }
 
   linkSelected(e) {
     const value = e.target.value
-    this.setState({
-      selectedItem: value
-    })
     window.location.hash = value
   }
 
   render() {
     return (
       <div className="mobile-select-menu-cont">
-        <select className="mobile-select-menu" onChange={this.linkSelected}>
+        <select className="mobile-select-menu" onInput={this.linkSelected}>
           {this.links.map((link) => (
             <React.Fragment key={link.id}>
               <option value={link.id}>{link.textNode}</option>

@@ -1,39 +1,56 @@
 const fs = require('fs')
+const path = require('path')
 
-// Make sure the data directory exists
-exports.onPreBootstrap = ({ reporter }) => {
-  const contentPath = 'data/index.html.md'
+let options = {
+  path: 'data',
+  prefix: '/',
+};
 
-  if (!fs.existsSync(contentPath)) {
-    reporter.panic(`File not found - Make sure you have data/index.html.md file`)
+exports.onPreInit = ({ reporter }, pluginOptions) => {
+  options = { ...options, ...pluginOptions };
+
+  // Make sure the directory exists
+  if (!fs.existsSync(options.path)) {
+    reporter.panic(`Directory not found - Make sure that "${options.path}" is a directory and it exists.`)
   }
 }
 
 // Creating a page with  docs/index.md file
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  // Check for title and language tabs
   const result = await graphql(`
     query {
-      markdownRemark(fileAbsolutePath: {ne: "docs/index.md"}) {
-        frontmatter {
-          language_tabs
-          title
+      allMarkdownRemark(filter: {
+        fileAbsolutePath: { regex: "/${options.path}/" }
+      }) {
+        edges {
+          node {
+            fileAbsolutePath
+            frontmatter {
+              title
+            }
+          }
         }
       }
-    }  
+    }
   `)
+  console.log(JSON.stringify(result));
 
   if (result.errors) {
-    reporter.panic("Missing required paraneters (Make sure your markdown has title and language_tabs)")
+    reporter.panic("Missing required parameters (Make sure your markdown has title)")
     return
   }
 
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const basePath = path.posix.join(options.prefix, node.fileAbsolutePath.slice(options.path.length, -3))
+    const docTemplate = require.resolve(`./src/templates/docs.jsx`)
 
-  const basePath = '/'
-  const docTemplate = require.resolve(`./src/templates/docs.jsx`)
+    actions.createPage({
+      path: basePath,
+      component: docTemplate,
+      context: {
+        fileAbsolutePath: node.fileAbsolutePath,
+      },
+    })
+  });
 
-  actions.createPage({
-    path: basePath,
-    component: docTemplate,
-  })
 }

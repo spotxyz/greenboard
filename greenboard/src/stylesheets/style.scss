@@ -5,7 +5,6 @@ $sidebar-width: 220px;
 $sidebar-bg: #f4f6f9;
 $sidebar-list-color: #333333;
 $sidebar-list-color-active: #2f80ed;
-$code-container-width: 50%;
 $code-container-bg: #2a3138;
 $aside-info-bg: #2f80ed;
 $aside-success-bg: #27ae60;
@@ -17,7 +16,7 @@ body {
   margin: 0;
   padding: 0;
   background: $main-bg;
-  font-size: 14px;
+  // font-size: 14px;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -31,6 +30,8 @@ body {
   width: $sidebar-width;
   background-color: $sidebar-bg;
   padding-top: 40px;
+  padding-bottom: 40px;
+  overflow: auto;
 
   .mobile-select-menu-cont {
     display: none;
@@ -61,11 +62,11 @@ body {
       display: none;
       padding-left: 10px;
       &__list-item {
-        margin-top: 4px;
+        margin-left: 15px;
         list-style: none;
-      }
-      .link {
-        font-size: 14px;
+        .link {
+          font-size: 12px;
+        }
       }
       .sublist-menu__list-item-active {
         .link {
@@ -86,7 +87,7 @@ body {
         text-decoration: underline;
       }
     }
-  }  
+  }
 }
 
 .container {
@@ -94,15 +95,6 @@ body {
   margin-left: $sidebar-width;
   min-height: 100%;
   transition: 1s ease;
-
-  .code-bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: $code-container-width;
-    background: $code-container-bg;
-  }
 
   .lang-selector {
     z-index: 100;
@@ -126,9 +118,26 @@ body {
   }
 }
 
+.content {
+  ul,
+  ol {
+    margin-left: 20px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+    list-style: disc;
+  }
+}
+
+summary {
+  cursor: pointer;
+  margin-left: 40px;
+}
+details {
+  padding-bottom: 10px;
+}
+
 .content > div {
   position: relative;
-  -webkit-transform: translateZ(0);
   z-index: 30;
   padding-bottom: 70px;
 
@@ -139,7 +148,7 @@ body {
   aside,
   table {
     margin-left: 40px;
-    margin-right: calc(#{$code-container-width} + 40px);
+    margin-right: 60px;
     @extend %left-col;
   }
 
@@ -168,7 +177,7 @@ body {
     margin-top: 0;
   }
 
-  p {
+  p, li {
     color: #5b5b5b;
   }
 
@@ -214,16 +223,12 @@ body {
 
   pre,
   blockquote {
-    color: #fff;
-    margin: 0;
-    width: $code-container-width;
-
-    float: right;
-    clear: right;
+    margin-left: 40px;
+    margin-right: 60px;
 
     box-sizing: border-box;
     @extend %right-col;
-    
+
     & > p {
       margin: 0;
     }
@@ -236,9 +241,6 @@ body {
   blockquote {
     padding: 10px;
     padding-left: 40px;
-    p {
-      color: #fff;
-    }
   }
 
   hr {
@@ -305,13 +307,7 @@ body {
 
 .remarked-linked-header {
   position: relative;
-  a {
-    display: none;
-    position: absolute;
-    left: -20px;
-  }
 }
-
 .logo {
   max-width: 175px;
   max-height: 50px;

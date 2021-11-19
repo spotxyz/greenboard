@@ -1,7 +1,5 @@
 @media (max-width: 576px) {
   .toc-wrapper {
-    // left: -$nav-width;
-
     &.open {
       left: 0;
     }
@@ -25,15 +23,6 @@
   }
 
   .lang-selector {
-    display: none;
-  }
-
-  %right-col + %left-col {
-    // margin-top: $main-padding;
-  }
-
-  // .sidebar,
-  .code-bg {
     display: none;
   }
 
@@ -68,17 +57,6 @@
         &:focus {
           outline: none;
         }
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        border-right: 1px solid #5b5b5b;
-        border-bottom: 1px solid #5b5b5b;
-        right: 12px;
-        top: 10px;
-        transform: rotate(45deg);
       }
     }
   }

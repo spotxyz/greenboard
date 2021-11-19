@@ -1,29 +1,16 @@
-import React, { Component } from 'react'
-import Contents from './contents'
-import LangSelector from './langselector'
-import { remarkHeaders } from '../utils/htmlAst'
-import SideBar from './sidebar'
-import DarkModeSwitch from './darkmodeswitch'
+import React, { Component } from 'react';
+
+import { remarkHeaders } from '../utils/htmlAst';
+import Contents from './contents';
+import SideBar from './sidebar';
 
 export default class Docs extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      options: [],
-      selected: ""
+      darkMode: false
     }
     this.updateMode = this.updateMode.bind(this)
-  }
-
-  componentWillMount() {
-    const langs = this.props.docs.frontmatter.language_tabs
-    this.setState({
-      options: langs,
-      selected: langs[0],
-      darkMode: false
-    })
-
-    this.setLang = this.setLang.bind(this)
   }
 
   setLang(lang) {
@@ -38,25 +25,18 @@ export default class Docs extends Component {
 
   render() {
     const { docs } = this.props
-    const { options, selected, darkMode } = this.state
+    const { darkMode } = this.state
     const ast = remarkHeaders(docs.htmlAst)
     const logoUrl = docs.frontmatter.attachments[0].publicURL
-    const { footer, search } = docs.frontmatter
+    const { search } = docs.frontmatter
 
     return (
       <React.Fragment>
-        <SideBar darkMode={darkMode} ast={ast} logoUrl={logoUrl} footer={footer} search={search} />
+        <SideBar darkMode={darkMode} ast={ast} logoUrl={logoUrl} search={search} />
         <div className={`container ${darkMode ? "dark" : ""}`}>
-          <LangSelector
-            options={options}
-            selected={selected}
-            setLang={this.setLang} />
-          <Contents
-            htmlAst={ast}
-            language={selected} />
-          <div className="code-bg"></div>
+          <Contents htmlAst={ast} />
         </div>
-        <DarkModeSwitch darkMode={darkMode} updateMode={this.updateMode} />
+        {/* <DarkModeSwitch darkMode={darkMode} updateMode={this.updateMode} /> */}
       </React.Fragment>
     )
   }

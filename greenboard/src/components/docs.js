@@ -31,13 +31,13 @@ export default class Docs extends Component {
     const { search } = docs.frontmatter
 
     return (
-      <React.Fragment>
+      <div className="greenboard">
         <SideBar darkMode={darkMode} ast={ast} logoUrl={logoUrl} search={search} />
         <div className={`container ${darkMode ? "dark" : ""}`}>
           <Contents htmlAst={ast} />
         </div>
         {/* <DarkModeSwitch darkMode={darkMode} updateMode={this.updateMode} /> */}
-      </React.Fragment>
+      </div>
     )
   }
 }

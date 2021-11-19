@@ -33,7 +33,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `)
-  console.log(JSON.stringify(result));
 
   if (result.errors) {
     reporter.panic("Missing required parameters (Make sure your markdown has title)")

@@ -5,11 +5,11 @@ export default class AsideMenuItem extends Component {
     const { link } = this.props
     const sublinks = link.children
     return (
-      <li>
+      <li className="aside-menu__list-item">
         <a href={`#${link.id}`} className="link">{link.textNode}</a>
-        <ul>
+        <ul className="sublist-menu">
           {sublinks.map((sublink) => (
-            <li key={sublink.id}>
+            <li key={sublink.id} className="sublist-menu__list-item">
               <a href={`#${sublink.id}`} className="link">{sublink.textNode}</a>
             </li>
           ))}

@@ -59,13 +59,12 @@ body {
       }
     }
     .sublist-menu {
-      display: none;
       padding-left: 10px;
       &__list-item {
-        margin-left: 15px;
+        margin-left: 5px;
         list-style: none;
         .link {
-          font-size: 12px;
+          font-size: 13px;
         }
       }
       .sublist-menu__list-item-active {

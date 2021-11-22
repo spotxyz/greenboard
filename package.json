@@ -14,14 +14,13 @@
   },
   "peerDependencies": {
     "gatsby": "^4.1.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "gatsby-plugin-react-helmet": "^3.1.11",
-    "gatsby-plugin-sass": "^2.1.17",
-    "gatsby-source-filesystem": "^2.1.28",
-    "gatsby-transformer-remark": "^2.6.26",
+    "gatsby-plugin-react-helmet": "^5.1.0",
+    "gatsby-plugin-sass": "^5.1.0",
+    "gatsby-transformer-remark": "^5.1.0",
     "js-search": "^1.4.3",
     "lodash": "^4.17.15",
     "sass": "^1.43.4",
@@ -30,8 +29,8 @@
     "rehype-react": "^4.0.1"
   },
   "devDependencies": {
-    "gatsby": "^2.15.29",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "gatsby": "^4.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

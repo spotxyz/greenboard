@@ -1,6 +1,4 @@
 .greenboard {
-  @import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
-
   $main-bg: #fff;
   $sidebar-width: 220px;
   $sidebar-bg: #f4f6f9;
@@ -10,7 +8,6 @@
   $aside-info-bg: #2f80ed;
   $aside-success-bg: #27ae60;
   $aside-warning-bg: #eb5757;
-  $code-font-family: "Roboto", sans-serif;
 
   html,
   body {
@@ -18,8 +15,6 @@
     padding: 0;
     background: $main-bg;
     // font-size: 14px;
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
   }
 
   .sidebar {
@@ -289,7 +284,6 @@
 
     code {
       word-break: break-all;
-      font-family: $code-font-family;
       font-size: 14px;
       background: #efefef;
       padding: 3px;

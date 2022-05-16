@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-greenboard",
-  "version": "0.2.0",
+  "name": "@spotxyz/gatsby-greenboard",
+  "version": "0.3.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -9,8 +9,8 @@
     "clean": "gatsby clean"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/shamin/greenboard.git"
+    "type": "git",
+    "url": "https://github.com/spotxyz/greenboard.git"
   },
   "peerDependencies": {
     "gatsby": "^4.1.1",
@@ -23,14 +23,15 @@
     "gatsby-transformer-remark": "^5.1.0",
     "js-search": "^1.4.3",
     "lodash": "^4.17.15",
-    "sass": "^1.43.4",
     "prism-react-renderer": "^1.0.1",
     "react-helmet": "^6.1.0",
-    "rehype-react": "^4.0.1"
+    "rehype-react": "^4.0.1",
+    "sass": "^1.43.4"
   },
   "devDependencies": {
     "gatsby": "^4.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
